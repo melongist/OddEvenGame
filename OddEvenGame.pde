@@ -1,3 +1,5 @@
+import processing.sound.*;
+
 int seed;
 int r;
 int started, paused;
@@ -7,6 +9,10 @@ int continued;
 imgButton start_button, go_button, stop_button;
 imgButton odd_button, even_button;
 imgButton succeeded_button, failed_button;
+
+//The Processing Foundation Sound Library install needed
+//Tool - Manage Tools - Libraries - Sound
+SoundFile sounds;
 
 void setup()
 {
@@ -84,6 +90,10 @@ void mouseClicked()
       odd_button.disable();
       even_button.disable();
       
+      //mp3 file from pixabay.com
+      sounds = new SoundFile(this, "success.wav");
+      sounds.play();
+      
       succeeded_button.enable();
       rewards = rewards*2;
       continued = continued+1;
@@ -92,6 +102,10 @@ void mouseClicked()
     {
       odd_button.disable();
       even_button.disable();
+
+      //mp3 file from pixabay.com
+      sounds = new SoundFile(this, "fail.wav");
+      sounds.play();
       
       failed_button.enable();
     }
@@ -105,6 +119,10 @@ void mouseClicked()
     {
       odd_button.disable();
       even_button.disable();
+
+      //mp3 file from pixabay.com
+      sounds = new SoundFile(this, "success.wav");
+      sounds.play();
       
       succeeded_button.enable();
       rewards = rewards*2;
@@ -114,7 +132,10 @@ void mouseClicked()
     {
       odd_button.disable();
       even_button.disable();
-      
+
+      sounds = new SoundFile(this, "fail.wav");
+      sounds.play();
+            
       failed_button.enable();  
     }
     paused = 1;
